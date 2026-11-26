@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Palette: lab-bench greys with a detector-trace blue and one violet highlight. */
+:root {
+  --paper: 244 247 248;
+  --surface: 255 255 255;
+  --ink: 18 32 42;
+  --muted: 78 94 104;
+  --line: 208 218 222;
+  --accent: 24 104 134;
+  --highlight: 91 70 200;
+  color-scheme: light;
+}
+.dark {
+  --paper: 11 20 26;
+  --surface: 17 29 37;
+  --ink: 232 240 243;
+  --muted: 150 166 175;
+  --line: 37 54 64;
+  --accent: 104 196 220;
+  --highlight: 170 154 255;
+  color-scheme: dark;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body { @apply bg-paper text-ink font-sans antialiased; }
+:focus-visible { outline: 2px solid rgb(var(--accent)); outline-offset: 3px; border-radius: 4px; }
+
+/* The one orchestrated moment: the chromatogram trace draws itself on load. */
+.trace { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 2.6s cubic-bezier(.4,0,.2,1) .2s forwards; }
+.peak { opacity: 0; animation: fade .8s ease 2.2s forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes fade { to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .trace { animation: none; stroke-dashoffset: 0; }
+  .peak { animation: none; opacity: 1; }
+}
