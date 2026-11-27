@@ -1,12 +1,16 @@
 import Chromatogram from './Chromatogram';
+import HeroIntro from './HeroIntro';
 import { profile, glance } from '@/data/content';
 
 export default function Hero() {
   return (
-    <section id="top" className="pb-16 pt-16 sm:pt-24">
+    <section id="top" className="pb-16 pt-12 sm:pt-20">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <p className="text-sm text-muted">{profile.name}</p>
-        <h1 className="mt-4 max-w-4xl font-serif text-4xl leading-[1.08] tracking-tight sm:text-6xl">
+        <div className="max-w-2xl">
+          <HeroIntro />
+        </div>
+
+        <h1 className="mt-12 max-w-4xl font-serif text-4xl leading-[1.08] tracking-tight sm:text-6xl">
           {profile.headline}
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{profile.positioning}</p>
